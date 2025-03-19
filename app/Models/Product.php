@@ -8,10 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-    protected $table = 'products';
+
     protected $fillable = ['name', 'price', 'description', 'quantity', 'category_id', 'featured_image', 'discount_id'];
-    public $timestamps = true;
-    protected $dateFormat = 'Y-m-d H:i:s';
     public function category()
     {
         return $this->belongsTo(Category::class);
