@@ -15,6 +15,6 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
   }
   public function getWithAll()
   {
-    return $this->model->with(['category', 'discount'])->get();
+    return $this->model->with(['category', 'discount', 'colors'])->get();
   }
 }

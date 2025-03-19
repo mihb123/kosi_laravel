@@ -23,7 +23,7 @@ class HomeController
         $categories = $products->pluck('category')->unique();
 
         $blogs = $this->blogRepository->all();
-        dd($categories);
+        // dd($products);
         // dd($products[0]->discount->discount_percentage);
         return view('home.index', compact('products', 'categories', 'blogs'));
     }
