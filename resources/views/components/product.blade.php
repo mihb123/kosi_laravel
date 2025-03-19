@@ -49,6 +49,7 @@
   <a href="?c=product&a=detail&id={{$product_id}}" class="productName line-title">
     {{ $product->name }}
   </a>
+
   <!-- color -->
   <div class="color-options">
     <?php foreach ($product->colors as $color) {
@@ -59,6 +60,7 @@
     </span>
     <?php } ?>
   </div>
+
   <!-- price -->
   <div class="price">
     <?php if ($discount) { ?>

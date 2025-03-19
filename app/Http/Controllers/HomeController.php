@@ -3,24 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Models\Product;
-use App\Models\Category;
-use App\Models\Discount;
-use App\Models\Blog;
+use App\Repositories\Product\ProductRepository;
+use App\Repositories\Blog\BlogRepository;
 
 class HomeController
 {
+    protected $productRepository;
+    protected $blogRepository;
+    public function __construct(ProductRepository $productRepository, BlogRepository $blogRepository)
+    {
+        $this->productRepository = $productRepository;
+        $this->blogRepository = $blogRepository;
+    }
+
     public function index()
     {
 
-        $products = Product::with(['category', 'discount'])->get();
-        $categories = Category::all();
+        $products = $this->productRepository->getWithAll();
+        $categories = $products->pluck('category')->unique();
 
-        $blogs = Blog::all();
-        dd($products);
+        $blogs = $this->blogRepository->all();
+        dd($categories);
         // dd($products[0]->discount->discount_percentage);
         return view('home.index', compact('products', 'categories', 'blogs'));
     }
 }
-111
