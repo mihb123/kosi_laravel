@@ -23,3 +23,4 @@ class HomeController
         return view('home.index', compact('products', 'categories', 'blogs'));
     }
 }
+111
